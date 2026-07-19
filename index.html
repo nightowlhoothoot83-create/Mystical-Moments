@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mystical Moments by Emma James — Visual Archive of Wild Light</title>
+  <meta name="description" content="Mystical Moments is a nature-led photography portfolio for fine art prints, digital downloads, brand visuals and soulful visual collections by Emma James.">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0810;
+      --surface: #120f1a;
+      --gold: #c9a86a;
+      --gold2: #e8d5a3;
+      --text: #ede8f5;
+      --muted: #9b8eb0;
+      --dim: #5a5070;
+      --border: rgba(201,168,106,0.15);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.7; }
+
+    .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,8,16,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: 1000px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .header-brand { font-family: 'Cinzel', serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; color: var(--gold); text-decoration: none; }
+    .header-nav { display: flex; gap: 4px; align-items: center; }
+    .header-nav a { color: var(--muted); text-decoration: none; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 7px 12px; border: 1px solid transparent; border-radius: 3px; transition: all 0.2s; white-space: nowrap; }
+    .header-nav a:hover { color: var(--gold); border-color: var(--border); }
+    .header-nav a.etsy { border-color: rgba(201,168,106,0.3); color: var(--gold); }
+    .header-nav a.etsy:hover { background: rgba(201,168,106,0.08); }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--gold); border-radius: 2px; }
+    .mobile-menu { display: none; background: var(--surface); border-bottom: 1px solid var(--border); padding: 12px 24px 16px; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; color: var(--muted); text-decoration: none; font-size: 0.82rem; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04); text-transform: uppercase; letter-spacing: 0.06em; }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--gold); }
+    @media (max-width: 680px) { .header-nav { display: none; } .hamburger { display: flex; } }
+
+    .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 100px 24px 80px; background: radial-gradient(ellipse at 50% 30%, rgba(139,92,246,0.1) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(201,168,106,0.06) 0%, transparent 50%), var(--bg); }
+    .hero-inner { max-width: 600px; margin: 0 auto; }
+    .hero-logo { width: 100%; max-width: 320px; margin: 0 auto 40px; display: block; filter: drop-shadow(0 0 40px rgba(201,168,106,0.2)); opacity: 0; animation: fadeUp 1s ease 0.2s forwards; }
+    .hero-actions { display: flex; flex-direction: column; gap: 10px; align-items: center; opacity: 0; animation: fadeUp 1s ease 0.5s forwards; margin-bottom: 56px; }
+    .btn-hero { display: inline-flex; align-items: center; justify-content: center; width: 260px; background: transparent; border: 1px solid var(--border); color: var(--text); font-family: 'Cinzel', serif; font-size: 0.65rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; border-radius: 3px; padding: 13px 28px; text-decoration: none; transition: all 0.25s; }
+    .btn-hero:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,106,0.05); }
+    .btn-hero.primary { border-color: rgba(201,168,106,0.4); color: var(--gold); }
+    .btn-hero.primary:hover { background: rgba(201,168,106,0.1); }
+    .hero-tagline { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 6vw, 3rem); font-weight: 300; line-height: 1.2; color: var(--text); margin-bottom: 16px; opacity: 0; animation: fadeUp 1s ease 0.7s forwards; }
+    .hero-tagline em { font-style: italic; color: var(--gold); }
+    .hero-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.9; opacity: 0; animation: fadeUp 1s ease 0.9s forwards; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    .section { max-width: 1000px; margin: 0 auto; padding: 80px 24px; }
+    .section-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 300; color: var(--text); margin-bottom: 14px; line-height: 1.3; }
+    .section-body { font-size: 0.9rem; color: var(--muted); max-width: 560px; line-height: 1.9; margin-bottom: 40px; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0 24px; }
+
+    .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    @media (max-width: 500px) { .gallery-grid { grid-template-columns: 1fr; } }
+    .gallery-item { border-radius: 6px; overflow: hidden; background: var(--surface); }
+    .gallery-item img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform 0.4s ease; }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-caption { text-align: center; padding: 10px 8px 14px; font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; font-style: italic; font-weight: 300; color: var(--muted); letter-spacing: 0.06em; background: var(--surface); }
+    .copyright-line { font-size: 0.72rem; color: var(--dim); text-align: center; margin-top: 20px; letter-spacing: 0.08em; }
+
+    .story-section { max-width: 700px; margin: 0 auto; text-align: center; padding: 80px 24px; }
+    .story-text { font-size: 0.95rem; color: var(--muted); line-height: 2; margin-bottom: 20px; }
+    .story-micro { font-size: 0.82rem; color: var(--dim); letter-spacing: 0.08em; font-style: italic; }
+
+    .about-box { background: rgba(201,168,106,0.06); border: 1px solid var(--border); border-radius: 12px; padding: 32px 24px; margin-bottom: 32px; }
+    .about-box-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+
+    .projects-bg { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; margin-top: 40px; }
+    .project-card { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px 16px; text-decoration: none; color: inherit; transition: all 0.2s; display: flex; flex-direction: column; gap: 8px; position: relative; }
+    .project-card:hover { border-color: rgba(201,168,106,0.3); transform: translateY(-2px); }
+    .project-card img { width: 48px; height: 48px; border-radius: 10px; object-fit: cover; }
+    .project-card-name { font-family: 'Cinzel', serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; color: var(--gold); }
+    .project-card-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+    .soon-badge { position: absolute; top: -8px; right: -8px; background: var(--gold); color: #0a0810; font-size: 0.52rem; font-weight: 800; padding: 3px 7px; border-radius: 999px; letter-spacing: 0.05em; }
+
+    .contact-center { text-align: center; }
+    .contact-center .section-body { margin: 0 auto 32px; }
+    .contact-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .contact-link { display: inline-flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 11px 18px; color: var(--muted); font-size: 0.8rem; text-decoration: none; transition: all 0.2s; }
+    .contact-link:hover { border-color: var(--gold); color: var(--gold); }
+
+    .footer { background: var(--surface); border-top: 1px solid var(--border); padding: 48px 24px 32px; text-align: center; }
+    .footer-name { font-family: 'Cinzel', serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 4px; }
+    .footer-by { font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; font-style: italic; color: var(--muted); margin-bottom: 20px; }
+    .footer-tagline { font-size: 0.7rem; color: var(--dim); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 24px; }
+    .footer-brands { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+    .footer-brands a img, .footer-brands span img { height: 34px; width: 34px; border-radius: 8px; object-fit: cover; opacity: 0.65; transition: opacity 0.2s; }
+    .footer-brands a img:hover { opacity: 1; }
+    .footer-brands .soon-wrap { position: relative; display: inline-block; height: 34px; width: 34px; }
+    .footer-brands .soon-wrap img { opacity: 0.4; height: 34px; width: 34px; border-radius: 8px; object-fit: cover; }
+    .footer-brands .soon-wrap .soon-tag { position: absolute; top: -5px; right: -5px; background: var(--gold); color: #0a0810; font-size: 0.45rem; font-weight: 800; padding: 2px 4px; border-radius: 999px; }
+    .footer-copy { font-size: 0.7rem; color: var(--dim); margin-top: 20px; }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: all 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="header-brand">MYSTICAL MOMENTS</a>
+      <nav class="header-nav">
+        <a href="https://www.etsy.com/au/shop/MysticalMomentsByEmma" target="_blank" rel="noopener" class="etsy">Shop on Etsy</a>
+        <a href="#collection">View Gallery</a>
+        <a href="#projects">Explore Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="https://www.etsy.com/au/shop/MysticalMomentsByEmma" target="_blank">Shop on Etsy</a>
+      <a href="#collection">View Gallery</a>
+      <a href="#projects">Explore Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <img src="mystical-moments-logo.png" alt="Mystical Moments by Emma James" class="hero-logo">
+      <div class="hero-actions">
+        <a href="https://www.etsy.com/au/shop/MysticalMomentsByEmma" target="_blank" rel="noopener" class="btn-hero primary">Shop on Etsy</a>
+        <a href="#collection" class="btn-hero">View Gallery</a>
+        <a href="#projects" class="btn-hero">Explore Projects</a>
+      </div>
+      <h1 class="hero-tagline">Where wild light becomes <em>memory.</em></h1>
+      <p class="hero-desc">Mystical Moments is a nature-led photography portfolio for fine art prints, digital downloads, brand visuals and soulful visual collections.</p>
+    </div>
+  </section>
+
+  <!-- GALLERY 1 -->
+  <section class="section" id="collection">
+    <div class="reveal">
+      <div class="section-label">The Collection</div>
+      <h2 class="section-title">A visual field of moonlight, weather, forest, coastline, roots, skyfire and quiet Australian landscapes.</h2>
+      <p class="section-body">Each image is a moment caught — the kind that passes in seconds but stays with you for years.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal"><img src="g1-img1.jpg" alt="Moon Silhouette"><div class="gallery-caption">Moon Silhouette</div></div>
+      <div class="gallery-item reveal"><img src="g1-img2.jpg" alt="Lavender Sky"><div class="gallery-caption">Lavender Sky</div></div>
+      <div class="gallery-item reveal"><img src="g1-img3.jpg" alt="Twilight Road"><div class="gallery-caption">Twilight Road</div></div>
+      <div class="gallery-item reveal"><img src="g1-img4.jpg" alt="Peaceful Plains"><div class="gallery-caption">Peaceful Plains</div></div>
+      <div class="gallery-item reveal"><img src="g1-img5.jpg" alt="Silo Moon"><div class="gallery-caption">Silo Moon</div></div>
+      <div class="gallery-item reveal"><img src="g1-img6.jpg" alt="Blue Beam"><div class="gallery-caption">Blue Beam</div></div>
+    </div>
+    <p class="copyright-line">© Emma James · Mystical Moments Photography · All images copyright protected. Reproduction without written consent is prohibited.</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- OWL & RAVEN -->
+  <section class="story-section" id="about">
+    <div class="reveal">
+      <div class="section-label">The Owl &amp; The Raven</div>
+      <h2 class="section-title">The Owl is my intuition.<br>The Raven is my execution.<br>Together they are my ascension.</h2>
+      <p class="story-text">I am the Owl.<br>I create the images.<br>I see them before they exist.<br>I capture them in the real world with my own hands, my own eye, my own intuition.</p>
+      <p class="story-text">The Raven is the technology.<br>It doesn't create my art — it carries it.<br>It does the technical work, the execution, the heavy lifting.<br>It helps me bring my real photography into the world.</p>
+      <img src="owl-raven.jpg" alt="The Owl and The Raven" style="width:100%;max-width:700px;border-radius:8px;margin:32px 0;filter:drop-shadow(0 0 30px rgba(139,92,246,0.2))">
+      <p class="story-text">The Owl sees in the dark.<br>The Raven rises with me.</p>
+      <p class="story-micro">I am the creator. It is the tool. Together we move.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- GALLERY 2 -->
+  <section class="section">
+    <div class="gallery-grid">
+      <div class="gallery-item reveal"><img src="g2-img1.jpg" alt="Sun Kissed Mist"><div class="gallery-caption">Sun Kissed Mist</div></div>
+      <div class="gallery-item reveal"><img src="g2-img2.jpg" alt="Split Skies"><div class="gallery-caption">Split Skies</div></div>
+      <div class="gallery-item reveal"><img src="g2-img3.jpg" alt="Under the Boardwalk"><div class="gallery-caption">Under the Boardwalk</div></div>
+      <div class="gallery-item reveal"><img src="g2-img4.jpg" alt="High Horizons"><div class="gallery-caption">High Horizons</div></div>
+      <div class="gallery-item reveal"><img src="g2-img5.jpg" alt="Morning's Glory"><div class="gallery-caption">Morning's Glory</div></div>
+      <div class="gallery-item reveal"><img src="g2-img6.jpg" alt="Rainbow Mist"><div class="gallery-caption">Rainbow Mist</div></div>
+    </div>
+    <p class="copyright-line">© Emma James · Mystical Moments Photography · All images copyright protected. Reproduction without written consent is prohibited.</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ABOUT ME -->
+  <section class="story-section" id="about-me">
+    <div class="reveal">
+      <div class="section-label">About My Photography</div>
+      <h2 class="section-title">I don't just take photos.<br>I capture mystical moments.</h2>
+      <p class="story-text">This is a collection of some of my favourite shots — images that found me as much as I found them. Each one holds something beyond the frame. A stillness. A pulse. A light that only exists for a second before it's gone forever.</p>
+      <p class="story-text">I photograph the soul of the Australian landscape — moonrises over open fields, ancient roots gripping stone, coastlines at the edge of storms, skies that catch fire at dusk. These aren't postcards. They are moments of essence, caught with intention and released into the world to be felt.</p>
+      <p class="story-text">Immerse yourself in the raw, quiet beauty of a country that most people drive past without ever truly seeing.</p>
+      <div class="about-box">
+        <div class="about-box-label">Limited Edition Fine Art Prints</div>
+        <p style="font-size:0.9rem;color:var(--muted);line-height:1.9;margin-bottom:12px">I offer high quality limited edition prints of my landscape photography, available in various dimensions. Each print comes with a <strong style="color:var(--text)">Certificate of Authenticity</strong> and is printed to archival standards — made to last, made to move you.</p>
+        <p style="font-size:0.85rem;color:var(--dim);line-height:1.8">Global delivery available via <strong style="color:var(--gold)">Fine Art America</strong> · Limited runs · Each print numbered and signed.</p>
+      </div>
+      <a href="https://www.etsy.com/au/shop/MysticalMomentsByEmma" target="_blank" rel="noopener" class="btn-hero primary" style="margin:0 auto">Shop Prints on Etsy</a>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- GALLERY 3 -->
+  <section class="section">
+    <div class="gallery-grid">
+      <div class="gallery-item reveal"><img src="g3-img1.jpg" alt="Ancient Roots"><div class="gallery-caption">Ancient Roots</div></div>
+      <div class="gallery-item reveal"><img src="g3-img2.jpg" alt="Forest Portal"><div class="gallery-caption">Forest Portal</div></div>
+      <div class="gallery-item reveal"><img src="g3-img3.jpg" alt="Stormy Remains"><div class="gallery-caption">Stormy Remains</div></div>
+      <div class="gallery-item reveal"><img src="g3-img4.jpg" alt="Driftwood Tracks"><div class="gallery-caption">Driftwood Tracks</div></div>
+      <div class="gallery-item reveal"><img src="g3-img5.jpg" alt="Driftwood Sentinel"><div class="gallery-caption">Driftwood Sentinel</div></div>
+      <div class="gallery-item reveal"><img src="g3-img6.jpg" alt="Fern Forest"><div class="gallery-caption">Fern Forest</div></div>
+    </div>
+    <p class="copyright-line">© Emma James · Mystical Moments Photography · All images copyright protected. Reproduction without written consent is prohibited.</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ASCENSION DIGITAL + BRANDS -->
+  <div class="projects-bg" id="projects">
+    <section class="section">
+      <div class="reveal" style="text-align:center;margin-bottom:40px">
+        <img src="ascension-digital.png" alt="Ascension Digital" style="max-width:280px;width:100%;height:auto;border-radius:10px;object-fit:contain;margin:0 auto 20px;display:block;filter:drop-shadow(0 0 20px rgba(201,168,106,0.2))">
+        <div class="section-label">The Ascension Digital Group</div>
+        <h2 class="section-title">One vision. Many expressions.</h2>
+        <p class="section-body" style="margin:0 auto">Mystical Moments is one expression of a larger creative vision — a multi-brand ecosystem built on purpose, creativity and digital innovation.</p>
+      </div>
+      <div class="projects-grid">
+        <a href="https://www.etsy.com/au/shop/MysticalMomentsByEmma" target="_blank" rel="noopener" class="project-card reveal">
+          <img src="mystical-moments.png" alt="Mystical Moments">
+          <div class="project-card-name">Mystical Moments</div>
+          <div class="project-card-desc">Fine art nature photography. Prints, downloads and visual collections.</div>
+        </a>
+        <a href="https://www.mycalctools.net" target="_blank" rel="noopener" class="project-card reveal">
+          <img src="mycalctools.png" alt="MyCalcTools">
+          <div class="project-card-name">MyCalcTools</div>
+          <div class="project-card-desc">38 free calculators for health, finance, lifestyle and more.</div>
+        </a>
+        <a href="https://www.mycalendartools.net" target="_blank" rel="noopener" class="project-card reveal">
+          <img src="mycalendartools.png" alt="MyCalendarTools">
+          <div class="project-card-name">MyCalendarTools</div>
+          <div class="project-card-desc">Date tools, moon phases, school holidays and countdowns.</div>
+        </a>
+        <a href="https://zyiacreations.etsy.com" target="_blank" rel="noopener" class="project-card reveal">
+          <img src="zyia-creations.png" alt="Zyia Creations">
+          <div class="project-card-name">Zyia Creations</div>
+          <div class="project-card-desc">Cosmic and mystical digital art prints and spiritual collections.</div>
+        </a>
+        <a href="https://www.facebook.com/share/18Ma3KsJTo/" target="_blank" rel="noopener" class="project-card reveal">
+          <img src="feed-the-feed.png" alt="Feed the Feed">
+          <div class="project-card-name">Feed the Feed</div>
+          <div class="project-card-desc">Dystopian social commentary. Dark humour for the awake.</div>
+        </a>
+        <a href="http://www.youtube.com/@spewcrewkids" target="_blank" rel="noopener" class="project-card reveal">
+          <img src="spew-crew-kids.png" alt="Spew Crew Kids">
+          <div class="project-card-name">Spew Crew Kids</div>
+          <div class="project-card-desc">Children's educational entertainment with original characters.</div>
+        </a>
+        <a href="https://raven-sharp.com" target="_blank" rel="noopener" class="project-card reveal">
+          <img src="ravensharp.png" alt="Raven Sharp">
+          <div class="project-card-name">Raven Sharp</div>
+          <div class="project-card-desc">End-to-end POD automation. AI image gen to direct publishing.</div>
+        </a>
+        <a href="https://ascensiondigitalgroup.com" target="_blank" rel="noopener" class="project-card reveal">
+          <img src="ascension-digital-square.jpg" alt="Ascension Digital">
+          <div class="project-card-name">Ascension Digital</div>
+          <div class="project-card-desc">The parent brand. Elevating your digital future.</div>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <!-- CONTACT -->
+  <section class="section contact-center" id="contact">
+    <div class="reveal">
+      <div class="section-label">Get in Touch</div>
+      <h2 class="section-title">Let's create something together.</h2>
+      <p class="section-body">Whether you're after a fine art print, a custom brand visual, or a collaboration — reach out. Every great project starts with a conversation.</p>
+      <div class="contact-links">
+        <a href="https://www.etsy.com/au/shop/MysticalMomentsByEmma" target="_blank" rel="noopener" class="contact-link">🛍️ Shop on Etsy</a>
+        <a href="mailto:ascensiondigitalagency@outlook.com" class="contact-link">✉️ Send an Email</a>
+        <a href="https://www.facebook.com/share/18Ma3KsJTo/" target="_blank" rel="noopener" class="contact-link">📘 Facebook</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-name">MYSTICAL MOMENTS</div>
+    <div class="footer-by">by Emma James</div>
+    <div class="footer-tagline">Capturing Magic · Preserving Soul</div>
+    <div class="footer-brands">
+      <a href="https://www.mycalctools.net" target="_blank"><img src="mycalctools.png" alt="MyCalcTools"></a>
+      <a href="https://www.mycalendartools.net" target="_blank"><img src="mycalendartools.png" alt="MyCalendarTools"></a>
+      <a href="https://zyiacreations.etsy.com" target="_blank"><img src="zyia-creations.png" alt="Zyia Creations"></a>
+      <a href="https://www.facebook.com/share/18Ma3KsJTo/" target="_blank"><img src="feed-the-feed.png" alt="Feed the Feed"></a>
+      <a href="http://www.youtube.com/@spewcrewkids" target="_blank"><img src="spew-crew-kids.png" alt="Spew Crew Kids"></a>
+      <a href="https://raven-sharp.com" target="_blank"><img src="ravensharp.png" alt="Raven Sharp"></a>
+      <a href="https://ascensiondigitalgroup.com" target="_blank"><img src="ascension-digital-square.jpg" alt="Ascension Digital"></a>
+      <div class="soon-wrap"><img src="synergy-services.png" alt="Synergy Services"><span class="soon-tag">SOON</span></div>
+      <div class="soon-wrap"><img src="natures-sacred-synergy.png" alt="Nature's Sacred Synergy"><span class="soon-tag">NFP</span></div>
+    </div>
+    <div class="footer-copy">© 2025 Mystical Moments by Emma James · Part of the Ascension Digital Group · All photography copyright protected.</div>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('hamburger');
+    const menu = document.getElementById('mobileMenu');
+    btn.addEventListener('click', () => menu.classList.toggle('open'));
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => observer.observe(r));
+  </script>
+
+</body>
+</html>
